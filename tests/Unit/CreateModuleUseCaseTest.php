@@ -14,7 +14,7 @@ use Addworking\Security\Domain\Repositories\MemberRepository;
 use Addworking\Security\Domain\Repositories\ModuleRepository;
 use Addworking\Security\Domain\Gateways\AuthenticationGateway;
 use Addworking\Security\Domain\Repositories\EnterpriseRepository;
-use Addworking\Security\Application\Services\AuthorizationChecker;
+use Addworking\Security\Application\AuthorizationChecker;
 use Addworking\Security\Application\CommandHandlers\CreateModuleHandler;
 
 class CreateModuleUseCaseTest extends TestCase

@@ -5,7 +5,7 @@ namespace Addworking\Security\Application\CommandHandlers;
 use Addworking\Security\Domain\Models\Module;
 use Addworking\Security\Domain\Exceptions\MemberNotAdmin;
 use Addworking\Security\Application\Commands\CreateModule;
-use Addworking\Security\Application\Services\AuthorizationChecker;
+use Addworking\Security\Application\AuthorizationChecker;
 use Addworking\Security\Domain\Exceptions\ModuleAlreadyExist;
 use Addworking\Security\Domain\Repositories\ModuleRepository;
 use Addworking\Security\Domain\Gateways\AuthenticationGateway;

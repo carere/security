@@ -8,7 +8,7 @@ use Addworking\Security\Application\Commands\AddSubModule;
 use Addworking\Security\Domain\Exceptions\ModuleDoesntExist;
 use Addworking\Security\Domain\Repositories\ModuleRepository;
 use Addworking\Security\Domain\Gateways\AuthenticationGateway;
-use Addworking\Security\Application\Services\AuthorizationChecker;
+use Addworking\Security\Application\AuthorizationChecker;
 use Addworking\Security\Domain\Exceptions\ModuleAlreadyExist;
 
 class AddSubModuleHandler

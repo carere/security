@@ -1,6 +1,6 @@
 <?php
 
-namespace Addworking\Security\Application\Services;
+namespace Addworking\Security\Application;
 
 use Addworking\Security\Domain\Models\User;
 use Addworking\Security\Domain\Repositories\EnterpriseRepository;

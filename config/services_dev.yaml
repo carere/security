@@ -17,6 +17,6 @@ services:
   Addworking\Security\Domain\Gateways\AuthenticationGateway:
     class: Addworking\Security\Infrastructure\InMemory\InMemoryAuthenticationGateway
 
-  Addworking\Security\Application\Services\AuthorizationChecker:
-    class: Addworking\Security\Application\Services\AuthorizationChecker
+  Addworking\Security\Application\AuthorizationChecker:
+    class: Addworking\Security\Application\AuthorizationChecker
     autowire: true

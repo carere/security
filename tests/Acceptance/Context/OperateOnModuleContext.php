@@ -27,7 +27,7 @@ use Addworking\Security\Domain\Exceptions\EnterpriseAlreadyHaveModule;
 use Addworking\Security\Application\CommandHandlers\AddSubModuleHandler;
 use Addworking\Security\Application\CommandHandlers\CreateModuleHandler;
 use Addworking\Security\Application\CommandHandlers\RemoveModuleHandler;
-use Addworking\Security\Application\Services\AuthorizationChecker;
+use Addworking\Security\Application\AuthorizationChecker;
 use Tests\ApplicationContainer;
 
 class OperateOnModuleContext extends TestCase implements Context

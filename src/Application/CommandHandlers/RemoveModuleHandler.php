@@ -3,7 +3,7 @@
 namespace Addworking\Security\Application\CommandHandlers;
 
 use Addworking\Security\Application\Commands\RemoveModule;
-use Addworking\Security\Application\Services\AuthorizationChecker;
+use Addworking\Security\Application\AuthorizationChecker;
 use Addworking\Security\Domain\Exceptions\EnterpriseAlreadyHaveModule;
 use Addworking\Security\Domain\Exceptions\MemberNotAdmin;
 use Addworking\Security\Domain\Exceptions\ModuleDoesntExist;
