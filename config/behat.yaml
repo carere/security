@@ -1,0 +1,6 @@
+default:
+  suites:
+    default:
+      paths: ["%paths.base%/../tests/Acceptance/"]
+      contexts:
+        - Tests\Acceptance\Context\OperateOnModuleContext

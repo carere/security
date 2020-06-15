@@ -1,0 +1,22 @@
+{
+  "name": "addworking/security",
+  "description": "Identity & Access Context",
+  "authors": [
+    {
+      "name": "Kevin Abatan",
+      "email": "abatan.k@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Addworking\\Security\\": "src/",
+      "Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "behat/behat": "3.*",
+    "phpunit/phpunit": "9.*",
+    "friendsofphp/php-cs-fixer": "^2.16"
+  }
+}
