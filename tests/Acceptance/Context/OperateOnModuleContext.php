@@ -24,15 +24,11 @@ use Addworking\Security\Domain\Gateways\AuthenticationGateway;
 use Addworking\Security\Domain\Repositories\EnterpriseRepository;
 use Addworking\Security\Application\CommandHandlers\EditModuleHandler;
 use Addworking\Security\Domain\Exceptions\EnterpriseAlreadyHaveModule;
-use Addworking\Security\Infrastructure\InMemory\InMemoryUserRepository;
 use Addworking\Security\Application\CommandHandlers\AddSubModuleHandler;
 use Addworking\Security\Application\CommandHandlers\CreateModuleHandler;
 use Addworking\Security\Application\CommandHandlers\RemoveModuleHandler;
 use Addworking\Security\Application\Services\AuthorizationChecker;
-use Addworking\Security\Infrastructure\InMemory\InMemoryMemberRepository;
-use Addworking\Security\Infrastructure\InMemory\InMemoryModuleRepository;
-use Addworking\Security\Infrastructure\InMemory\InMemoryEnterpriseRepository;
-use Addworking\Security\Infrastructure\InMemory\InMemoryAuthenticationGateway;
+use Tests\ApplicationContainer;
 
 class OperateOnModuleContext extends TestCase implements Context
 {
@@ -46,14 +42,19 @@ class OperateOnModuleContext extends TestCase implements Context
 
     public function __construct()
     {
-        $this->userRepository = new InMemoryUserRepository();
-        $this->enterpriseRepository = new InMemoryEnterpriseRepository();
-        $this->memberRepository = new InMemoryMemberRepository();
-        $this->moduleRepository = new InMemoryModuleRepository();
-        $this->authenticationGateway = new InMemoryAuthenticationGateway();
-        $this->authorizationChecker = new AuthorizationChecker(
-            $this->memberRepository,
-            $this->enterpriseRepository
+        $container = ApplicationContainer::getContainer();
+
+        $this->userRepository = $container->get(UserRepository::class);
+        $this->enterpriseRepository = $container->get(
+            EnterpriseRepository::class
+        );
+        $this->memberRepository = $container->get(MemberRepository::class);
+        $this->moduleRepository = $container->get(ModuleRepository::class);
+        $this->authenticationGateway = $container->get(
+            AuthenticationGateway::class
+        );
+        $this->authorizationChecker = $container->get(
+            AuthorizationChecker::class
         );
     }
 

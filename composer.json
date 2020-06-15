@@ -7,16 +7,21 @@
       "email": "abatan.k@gmail.com"
     }
   ],
-  "require": {},
   "autoload": {
     "psr-4": {
       "Addworking\\Security\\": "src/",
       "Tests\\": "tests/"
     }
   },
+  "require": {
+    "doctrine/orm": "^2.7"
+  },
   "require-dev": {
     "behat/behat": "3.*",
     "phpunit/phpunit": "9.*",
-    "friendsofphp/php-cs-fixer": "^2.16"
+    "friendsofphp/php-cs-fixer": "2.*",
+    "symfony/dependency-injection": "5.*",
+    "symfony/config": "5.*",
+    "symfony/yaml": "5.*"
   }
 }

@@ -2,13 +2,40 @@
 
 namespace Tests\Unit\Traits;
 
+use Tests\ApplicationContainer;
 use Addworking\Security\Domain\Models\User;
 use Addworking\Security\Domain\Models\Member;
 use Addworking\Security\Domain\Models\Module;
 use Addworking\Security\Domain\Models\Enterprise;
+use Addworking\Security\Domain\Repositories\UserRepository;
+use Addworking\Security\Domain\Repositories\MemberRepository;
+use Addworking\Security\Domain\Repositories\ModuleRepository;
+use Addworking\Security\Domain\Gateways\AuthenticationGateway;
+use Addworking\Security\Domain\Repositories\EnterpriseRepository;
+use Addworking\Security\Application\Services\AuthorizationChecker;
 
 trait PopulateRepositories
 {
+    protected function setUp(): void
+    {
+        $container = ApplicationContainer::getContainer();
+
+        $this->userRepository = $container->get(UserRepository::class);
+        $this->enterpriseRepository = $container->get(
+            EnterpriseRepository::class
+        );
+        $this->memberRepository = $container->get(MemberRepository::class);
+        $this->moduleRepository = $container->get(ModuleRepository::class);
+        $this->authenticationGateway = $container->get(
+            AuthenticationGateway::class
+        );
+        $this->authorizationChecker = $container->get(
+            AuthorizationChecker::class
+        );
+
+        $this->populateMembers();
+    }
+
     private function populateModules()
     {
         $missionOffer = new Module(

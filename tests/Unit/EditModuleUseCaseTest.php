@@ -15,11 +15,6 @@ use Addworking\Security\Domain\Gateways\AuthenticationGateway;
 use Addworking\Security\Domain\Repositories\EnterpriseRepository;
 use Addworking\Security\Application\Services\AuthorizationChecker;
 use Addworking\Security\Application\CommandHandlers\EditModuleHandler;
-use Addworking\Security\Infrastructure\InMemory\InMemoryUserRepository;
-use Addworking\Security\Infrastructure\InMemory\InMemoryMemberRepository;
-use Addworking\Security\Infrastructure\InMemory\InMemoryModuleRepository;
-use Addworking\Security\Infrastructure\InMemory\InMemoryEnterpriseRepository;
-use Addworking\Security\Infrastructure\InMemory\InMemoryAuthenticationGateway;
 
 class EditModuleUseCaseTest extends TestCase
 {
@@ -31,20 +26,6 @@ class EditModuleUseCaseTest extends TestCase
     private EnterpriseRepository $enterpriseRepository;
     private AuthenticationGateway $authenticationGateway;
     private AuthorizationChecker $authorizationChecker;
-
-    protected function setUp(): void
-    {
-        $this->memberRepository = new InMemoryMemberRepository();
-        $this->userRepository = new InMemoryUserRepository();
-        $this->enterpriseRepository = new InMemoryEnterpriseRepository();
-        $this->moduleRepository = new InMemoryModuleRepository();
-        $this->authenticationGateway = new InMemoryAuthenticationGateway();
-        $this->authorizationChecker = new AuthorizationChecker(
-            $this->memberRepository, $this->enterpriseRepository
-        );
-
-        $this->populateMembers();
-    }
 
     /** @test */
     public function shouldEditModuleWhenUserIsSupport()
