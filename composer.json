@@ -14,7 +14,7 @@
     }
   },
   "require": {
-    "doctrine/orm": "^2.7"
+    "doctrine/orm": "2.*"
   },
   "require-dev": {
     "behat/behat": "3.*",
@@ -22,6 +22,7 @@
     "friendsofphp/php-cs-fixer": "2.*",
     "symfony/dependency-injection": "5.*",
     "symfony/config": "5.*",
-    "symfony/yaml": "5.*"
+    "symfony/yaml": "5.*",
+    "symfony/dotenv": "5.*"
   }
 }

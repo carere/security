@@ -18,7 +18,7 @@ trait PopulateRepositories
 {
     protected function setUp(): void
     {
-        $container = ApplicationContainer::getContainer();
+        $container = ApplicationContainer::getContainerAndBootEnv();
 
         $this->userRepository = $container->get(UserRepository::class);
         $this->enterpriseRepository = $container->get(

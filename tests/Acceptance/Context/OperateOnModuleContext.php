@@ -42,7 +42,7 @@ class OperateOnModuleContext extends TestCase implements Context
 
     public function __construct()
     {
-        $container = ApplicationContainer::getContainer();
+        $container = ApplicationContainer::getContainerAndBootEnv();
 
         $this->userRepository = $container->get(UserRepository::class);
         $this->enterpriseRepository = $container->get(
