@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Tests\Unit\Traits\Authentication;
 use Tests\Unit\Traits\PopulateRepositories;
 use Addworking\Security\Domain\Models\Module;
+use Addworking\Security\Application\AuthorizationChecker;
 use Addworking\Security\Domain\Exceptions\MemberNotAdmin;
 use Addworking\Security\Application\Commands\AddSubModule;
 use Addworking\Security\Domain\Repositories\UserRepository;
@@ -15,7 +16,6 @@ use Addworking\Security\Domain\Repositories\MemberRepository;
 use Addworking\Security\Domain\Repositories\ModuleRepository;
 use Addworking\Security\Domain\Gateways\AuthenticationGateway;
 use Addworking\Security\Domain\Repositories\EnterpriseRepository;
-use Addworking\Security\Application\AuthorizationChecker;
 use Addworking\Security\Application\CommandHandlers\AddSubModuleHandler;
 
 class AddSubModuleUseCaseTest extends TestCase

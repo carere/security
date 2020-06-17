@@ -20,3 +20,6 @@ services:
   Addworking\Security\Application\AuthorizationChecker:
     class: Addworking\Security\Application\AuthorizationChecker
     autowire: true
+
+  Doctrine\ORM\EntityManagerInterface:
+    synthetic: true

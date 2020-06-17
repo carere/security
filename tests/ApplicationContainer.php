@@ -2,10 +2,12 @@
 
 namespace Tests;
 
+use Symfony\Component\Dotenv\Dotenv;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Addworking\Security\Infrastructure\EntityManagerFactory;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use Symfony\Component\Dotenv\Dotenv;
 
 class ApplicationContainer
 {
@@ -19,6 +21,11 @@ class ApplicationContainer
             new FileLocator(__DIR__ . "/../config")
         );
         $loader->load("services_{$_ENV['APP_ENV']}.yaml");
+        $containerBuilder->set(
+            EntityManagerInterface::class,
+            EntityManagerFactory::createEntityManager()
+        );
+
         $containerBuilder->compile();
 
         return $containerBuilder;

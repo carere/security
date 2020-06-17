@@ -3,7 +3,7 @@ version: "3"
 services:
   postgres:
     image: postgres:9
-    container_name: postgres
+    container_name: security_test
     environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_USER: ${DB_USERNAME}
