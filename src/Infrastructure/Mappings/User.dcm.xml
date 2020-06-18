@@ -1,0 +1,12 @@
+<doctrine-mapping>
+    <entity name="Addworking\Domain\Models\User"
+            table="addworking_user_users"
+            schema="public"
+            repository-class="Addworking\Infrastructure\Doctrine\UserRepository">
+
+        <id name="id" column="id" type="string" length="36" />
+        <field name="firstname" column="firstname" type="string" length="255" />
+        <field name="lastname" column="lastname" type="string" length="255" />
+
+    </entity>
+</doctrine-mapping>

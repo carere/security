@@ -1,0 +1,12 @@
+<doctrine-mapping>
+    <entity name="Addworking\Domain\Models\Module"
+            table="addworking_security_modules"
+            schema="public"
+            repository-class="Addworking\Infrastructure\Doctrine\ModuleRepository">
+
+        <id name="id" column="id" type="string" length="36" />
+        <field name="name" column="name" type="string" length="255" />
+        <field name="description" column="description" type="text" length="255" />
+
+    </entity>
+</doctrine-mapping>

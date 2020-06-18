@@ -1,0 +1,11 @@
+<doctrine-mapping>
+    <entity name="Addworking\Domain\Models\Enterprise"
+            table="addworking_enterprise_enterprises"
+            schema="public"
+            repository-class="Addworking\Infrastructure\Doctrine\EnterpriseRepository">
+
+        <id name="id" column="id" type="string" length="36" />
+        <field name="name" column="name" type="string" length="255" />
+
+    </entity>
+</doctrine-mapping>

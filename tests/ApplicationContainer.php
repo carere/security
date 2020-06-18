@@ -21,10 +21,13 @@ class ApplicationContainer
             new FileLocator(__DIR__ . "/../config")
         );
         $loader->load("services_{$_ENV['APP_ENV']}.yaml");
-        $containerBuilder->set(
-            EntityManagerInterface::class,
-            EntityManagerFactory::createEntityManager()
-        );
+
+        if ($_ENV['APP_ENV'] !== 'dev') {
+            $containerBuilder->set(
+                EntityManagerInterface::class,
+                EntityManagerFactory::createEntityManager()
+            );
+        }
 
         $containerBuilder->compile();
 
