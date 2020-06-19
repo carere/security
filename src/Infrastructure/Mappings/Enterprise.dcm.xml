@@ -1,11 +1,22 @@
 <doctrine-mapping>
-    <entity name="Addworking\Domain\Models\Enterprise"
-            table="addworking_enterprise_enterprises"
-            schema="public"
-            repository-class="Addworking\Infrastructure\Doctrine\EnterpriseRepository">
+    <entity name="Addworking\Domain\Models\Enterprise" table="addworking_enterprise_enterprises" schema="public" repository-class="Addworking\Infrastructure\Doctrine\EnterpriseRepository">
 
-        <id name="id" column="id" type="string" length="36" />
+        <id name="id" column="id" type="guid">
+            <generator strategy="NONE" />
+        </id>
+
         <field name="name" column="name" type="string" length="255" />
+
+        <many-to-many field="modules" target-entity="Module">
+            <join-table name="addworking_enterprises_has_modules">
+                <join-columns>
+                    <join-column name="enterprise_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="module_id" referenced-column-name="id" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
 
     </entity>
 </doctrine-mapping>
