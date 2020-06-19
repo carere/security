@@ -1,11 +1,11 @@
 <doctrine-mapping>
-    <entity name="Addworking\Security\Domain\Models\Member" table="addworking_user_users" schema="public" repository-class="Addworking\Security\Infrastructure\Doctrine\Repositories\MemberRepository">
+    <entity name="Addworking\Security\Domain\Models\Member" table="addworking_enterprise_members" schema="public" repository-class="Addworking\Security\Infrastructure\Doctrine\Repositories\MemberRepository">
 
         <id name="id" column="id" type="guid">
             <generator strategy="NONE" />
         </id>
 
-        <many-to-one field="user" target-entity="Addworking\Security\Domain\Models\User">
+        <!-- <many-to-one field="user" target-entity="Addworking\Security\Domain\Models\User">
             <join-column name="user_id" referenced-column-name="id" />
         </many-to-one>
 
@@ -15,7 +15,7 @@
 
         <unique-constraints>
             <unique-constraint columns="user,enterprise" name="unique_member" />
-        </unique-constraints>
+        </unique-constraints> -->
 
     </entity>
 </doctrine-mapping>
