@@ -19,7 +19,7 @@ class EntityManagerFactory
                 'port' => $_ENV['DB_PORT'],
             ],
             Setup::createXMLMetadataConfiguration(
-                [__DIR__ . "/Doctrine/Mappings"],
+                [__DIR__ . "/Mappings"],
                 $_ENV['APP_ENV'] === 'dev' || $_ENV['APP_ENV'] === 'test'
             )
         );

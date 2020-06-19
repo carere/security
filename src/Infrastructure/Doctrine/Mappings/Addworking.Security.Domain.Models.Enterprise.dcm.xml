@@ -1,5 +1,5 @@
 <doctrine-mapping>
-    <entity name="Addworking\Domain\Models\Enterprise" table="addworking_enterprise_enterprises" schema="public" repository-class="Addworking\Infrastructure\Doctrine\Repositories\EnterpriseRepository">
+    <entity name="Addworking\Security\Domain\Models\Enterprise" table="addworking_enterprise_enterprises" schema="public" repository-class="Addworking\Security\Infrastructure\Doctrine\Repositories\EnterpriseRepository">
 
         <id name="id" column="id" type="guid">
             <generator strategy="NONE" />
@@ -7,7 +7,7 @@
 
         <field name="name" column="name" type="string" length="255" />
 
-        <many-to-many field="modules" target-entity="Module" index-by="id">
+        <many-to-many field="modules" target-entity="Addworking\Security\Domain\Models\Module" index-by="id">
             <join-table name="addworking_enterprises_has_modules">
                 <join-columns>
                     <join-column name="enterprise_id" referenced-column-name="id" />
