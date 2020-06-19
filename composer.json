@@ -26,5 +26,12 @@
     "symfony/config": "5.*",
     "symfony/yaml": "5.*",
     "symfony/dotenv": "5.*"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Addworking\\Security\\Infrastructure\\Laravel\\SecurityServiceProvider"
+      ]
+    }
   }
 }
