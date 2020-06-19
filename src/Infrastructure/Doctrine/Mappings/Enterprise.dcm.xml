@@ -7,7 +7,7 @@
 
         <field name="name" column="name" type="string" length="255" />
 
-        <many-to-many field="modules" target-entity="Module">
+        <many-to-many field="modules" target-entity="Module" index-by="id">
             <join-table name="addworking_enterprises_has_modules">
                 <join-columns>
                     <join-column name="enterprise_id" referenced-column-name="id" />
