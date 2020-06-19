@@ -1,0 +1,30 @@
+services:
+  _defaults:
+    public: true
+
+  Doctrine\ORM\EntityManagerInterface:
+    synthetic: true
+
+  Addworking\Security\Domain\Repositories\EnterpriseRepository:
+    class: Addworking\Security\Infrastructure\Doctrine\DoctrineEnterpriseRepository
+    autowire: true
+
+  Addworking\Security\Domain\Repositories\ModuleRepository:
+    class: Addworking\Security\Infrastructure\Doctrine\DoctrineModuleRepository
+    autowire: true
+
+  Addworking\Security\Domain\Repositories\UserRepository:
+    class: Addworking\Security\Infrastructure\Doctrine\DoctrineUserRepository
+    autowire: true
+
+  Addworking\Security\Domain\Repositories\MemberRepository:
+    class: Addworking\Security\Infrastructure\Doctrine\DoctrineMemberRepository
+    autowire: true
+
+  Addworking\Security\Domain\Gateways\AuthenticationGateway:
+    class: Addworking\Security\Infrastructure\Doctrine\DoctrineAuthenticationGateway
+    autowire: true
+
+  Addworking\Security\Application\AuthorizationChecker:
+    class: Addworking\Security\Application\AuthorizationChecker
+    autowire: true

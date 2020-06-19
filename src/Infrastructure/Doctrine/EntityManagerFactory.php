@@ -1,6 +1,6 @@
 <?php
 
-namespace Addworking\Security\Infrastructure;
+namespace Addworking\Security\Infrastructure\Doctrine;
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -19,7 +19,7 @@ class EntityManagerFactory
                 'port' => $_ENV['DB_PORT'],
             ],
             Setup::createXMLMetadataConfiguration(
-                [__DIR__ . "/Mappings"],
+                [__DIR__ . "/Doctrine/Mappings"],
                 $_ENV['APP_ENV'] === 'dev' || $_ENV['APP_ENV'] === 'test'
             )
         );

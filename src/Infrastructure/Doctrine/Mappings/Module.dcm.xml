@@ -1,5 +1,5 @@
 <doctrine-mapping>
-    <entity name="Addworking\Domain\Models\Module" table="addworking_security_modules" schema="public" repository-class="Addworking\Infrastructure\Doctrine\ModuleRepository">
+    <entity name="Addworking\Domain\Models\Module" table="addworking_security_modules" schema="public" repository-class="Addworking\Infrastructure\Doctrine\Repositories\ModuleRepository">
 
         <id name="id" column="id" type="guid">
             <generator strategy="NONE" />
