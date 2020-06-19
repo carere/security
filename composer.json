@@ -14,7 +14,9 @@
     }
   },
   "require": {
-    "doctrine/orm": "2.*"
+    "doctrine/orm": "2.*",
+    "illuminate/support": "7.*",
+    "illuminate/database": "^7.16"
   },
   "require-dev": {
     "behat/behat": "3.*",

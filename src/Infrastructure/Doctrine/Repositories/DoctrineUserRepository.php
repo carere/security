@@ -7,7 +7,7 @@ use Addworking\Security\Domain\Models\User;
 use Addworking\Security\Domain\Repositories\UserRepository;
 use Doctrine\ORM\AbstractQuery;
 
-class DoctrineUserRepositories implements UserRepository
+class DoctrineUserRepository implements UserRepository
 {
     private EntityManagerInterface $em;
 

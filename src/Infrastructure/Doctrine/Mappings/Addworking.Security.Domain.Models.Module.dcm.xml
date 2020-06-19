@@ -8,8 +8,8 @@
         <field name="name" column="name" type="string" length="255" />
         <field name="description" column="description" type="text" />
 
-        <!-- <one-to-many field="childrens" target-entity="Addworking\Security\Domain\Models\Module" mapped-by="parent" index-by="id" />
-        <many-to-one field="parent" target-entity="Addworking\Security\Domain\Models\Module" inversed-by="childrens" /> -->
+        <one-to-many field="childrens" target-entity="Addworking\Security\Domain\Models\Module" mapped-by="parent" index-by="id" />
+        <many-to-one field="parent" target-entity="Addworking\Security\Domain\Models\Module" inversed-by="childrens" />
 
     </entity>
 </doctrine-mapping>

@@ -18,12 +18,10 @@ class EntityManagerFactory
                 'host' => $_ENV['DB_HOST'],
                 'port' => $_ENV['DB_PORT'],
                 'dbname' => $_ENV['DB_DATABASE'],
-                'charset' => 'utf8',
-                'sslmode' => 'prefer',
             ],
             Setup::createXMLMetadataConfiguration(
-                [__DIR__ . "/Mappings"]
-                //$_ENV['APP_ENV'] === 'dev' || $_ENV['APP_ENV'] === 'test'
+                [__DIR__ . "/Mappings"],
+                $_ENV['APP_ENV'] === 'dev' || $_ENV['APP_ENV'] === 'test'
             )
         );
     }
