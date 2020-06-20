@@ -60,14 +60,14 @@ trait PopulateRepositories
             "007, voici l'offre"
         );
 
-        $this->moduleRepository->add($missionOffer);
-        $this->moduleRepository->add(
+        $this->moduleRepository->save($missionOffer);
+        $this->moduleRepository->save(
             new Module('abc', 'Sécurité', "La sécurité c'est iportant :)")
         );
-        $this->moduleRepository->add(
+        $this->moduleRepository->save(
             new Module('def', 'Facturation', "Payer, c'est bien :D")
         );
-        $this->moduleRepository->add(
+        $this->moduleRepository->save(
             (new Module(
                 'ghi',
                 'Mission',
@@ -78,19 +78,19 @@ trait PopulateRepositories
 
     private function populateUsers()
     {
-        $this->userRepository->add(new User("abc", "Matthieu", "Fravallo"));
-        $this->userRepository->add(new User("def", "Jean", "Dupont"));
+        $this->userRepository->save(new User("abc", "Matthieu", "Fravallo"));
+        $this->userRepository->save(new User("def", "Jean", "Dupont"));
     }
 
     private function populateEnterprises()
     {
-        $this->enterpriseRepository->add(
+        $this->enterpriseRepository->save(
             (new Enterprise(
                 'f1494810-ed7a-406f-8aeb-7845c4105b01',
                 'Addworking'
             ))->addModule($this->moduleRepository->find('abc'))
         );
-        $this->enterpriseRepository->add(
+        $this->enterpriseRepository->save(
             (new Enterprise('def', 'Entreprise n°1'))->addModule(
                 $this->moduleRepository->find('def')
             )
@@ -103,7 +103,7 @@ trait PopulateRepositories
         $this->populateUsers();
         $this->populateEnterprises();
 
-        $this->memberRepository->add(
+        $this->memberRepository->save(
             (new Member('abc'))
                 ->setUser(
                     $this->userRepository->findByName('Matthieu Fravallo')
@@ -113,7 +113,7 @@ trait PopulateRepositories
                 )
         );
 
-        $this->memberRepository->add(
+        $this->memberRepository->save(
             (new Member('def'))
                 ->setUser($this->userRepository->findByName('Jean Dupont'))
                 ->setEnterprise(

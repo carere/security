@@ -28,11 +28,10 @@ class DoctrineModuleRepository implements ModuleRepository
             ->getResult();
     }
 
-    public function delete(string $id): bool
+    public function delete(Module $module): void
     {
-        $this->em->remove($this->em->find(Module::class, $id));
-
-        return true;
+        $this->em->remove($module);
+        $this->em->flush();
     }
 
     public function nextIdentity(): string
@@ -43,15 +42,10 @@ class DoctrineModuleRepository implements ModuleRepository
 
     public function save(Module $module): void
     {
-        $this->add($module);
-
-        $this->em->flush();
-    }
-
-    public function add(Module $module): void
-    {
         if (!$this->em->contains($module)) {
             $this->em->persist($module);
         }
+
+        $this->em->flush();
     }
 }

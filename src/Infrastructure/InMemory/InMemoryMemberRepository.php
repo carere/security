@@ -9,9 +9,11 @@ class InMemoryMemberRepository implements MemberRepository
 {
     private array $members = [];
 
-    public function add(Member $member): void
+    public function save(Member $member): void
     {
-        $this->members[$member->getId()] = $member;
+        if (!isset($this->members[$member->getId()])) {
+            $this->members[$member->getId()] = $member;
+        }
     }
 
     public function findByUserAndEnterprise(

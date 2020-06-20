@@ -40,10 +40,12 @@ class DoctrineEnterpriseRepository implements EnterpriseRepository
             ->getArrayResult();
     }
 
-    public function add(Enterprise $enterprise): void
+    public function save(Enterprise $enterprise): void
     {
         if (!$this->em->contains($enterprise)) {
             $this->em->persist($enterprise);
         }
+
+        $this->em->flush();
     }
 }

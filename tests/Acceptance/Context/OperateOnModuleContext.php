@@ -78,7 +78,7 @@ class OperateOnModuleContext extends TestCase implements Context
     public function desUtilisateursExistent(TableNode $users)
     {
         foreach ($users as $user) {
-            $this->userRepository->add(
+            $this->userRepository->save(
                 new User($user['id'], $user['firstname'], $user['lastname'])
             );
         }
@@ -113,7 +113,7 @@ class OperateOnModuleContext extends TestCase implements Context
             );
         }
 
-        $this->moduleRepository->add($parent);
+        $this->moduleRepository->save($parent);
 
         return $parent;
     }
@@ -133,7 +133,7 @@ class OperateOnModuleContext extends TestCase implements Context
                 explode(',', $enterprise['modules'])
             );
 
-            $this->enterpriseRepository->add($e);
+            $this->enterpriseRepository->save($e);
         }
     }
 
@@ -148,7 +148,7 @@ class OperateOnModuleContext extends TestCase implements Context
                 $member['enterprise']
             );
 
-            $this->memberRepository->add(
+            $this->memberRepository->save(
                 (new Member($member['id']))
                     ->setUser($user)
                     ->setEnterprise($enterprise)

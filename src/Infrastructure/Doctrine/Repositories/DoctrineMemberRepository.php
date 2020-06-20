@@ -31,10 +31,12 @@ class DoctrineMemberRepository implements MemberRepository
             ->getResult();
     }
 
-    public function add(Member $member): void
+    public function save(Member $member): void
     {
         if (!$this->em->contains($member)) {
             $this->em->persist($member);
         }
+
+        $this->em->flush();
     }
 }

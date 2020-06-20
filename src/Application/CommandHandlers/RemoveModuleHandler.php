@@ -36,11 +36,13 @@ class RemoveModuleHandler
 
         $this->cancelIfModuleStillLinkToAnEnterprise($command->getModuleId());
 
-        $isDeleted = $this->moduleRepository->delete($command->getModuleId());
+        $module = $this->moduleRepository->find($command->getModuleId());
 
-        if (!$isDeleted) {
+        if (null === $module) {
             throw new ModuleDoesntExist();
         }
+
+        $this->moduleRepository->delete($module);
     }
 
     private function cancelIfUserNotAdmin()

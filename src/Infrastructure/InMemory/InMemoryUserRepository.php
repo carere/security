@@ -9,9 +9,11 @@ class InMemoryUserRepository implements UserRepository
 {
     private array $users = [];
 
-    public function add(User $user): void
+    public function save(User $user): void
     {
-        $this->users[$user->getID()] = $user;
+        if (!isset($this->users[$user->getId()])) {
+            $this->users[$user->getID()] = $user;
+        }
     }
 
     public function findByName(string $name): ?User

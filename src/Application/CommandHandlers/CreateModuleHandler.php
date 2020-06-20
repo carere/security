@@ -59,6 +59,6 @@ class CreateModuleHandler
             $description
         );
 
-        $this->moduleRepository->add($module);
+        $this->moduleRepository->save($module);
     }
 }

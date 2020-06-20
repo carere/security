@@ -26,10 +26,12 @@ class DoctrineUserRepository implements UserRepository
             ->getResult(AbstractQuery::HYDRATE_OBJECT);
     }
 
-    public function add(User $user): void
+    public function save(User $user): void
     {
         if (!$this->em->contains($user)) {
             $this->em->persist($user);
         }
+
+        $this->em->flush();
     }
 }

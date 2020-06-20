@@ -9,9 +9,11 @@ class InMemoryEnterpriseRepository implements EnterpriseRepository
 {
     private array $enterprises = [];
 
-    public function add(Enterprise $enterprise): void
+    public function save(Enterprise $enterprise): void
     {
-        $this->enterprises[$enterprise->getId()] = $enterprise;
+        if (!isset($this->enterprises[$enterprise->getId()])) {
+            $this->enterprises[$enterprise->getId()] = $enterprise;
+        }
     }
 
     public function findByName(string $name): ?Enterprise
