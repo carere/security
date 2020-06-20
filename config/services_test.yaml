@@ -6,23 +6,23 @@ services:
     synthetic: true
 
   Addworking\Security\Domain\Repositories\EnterpriseRepository:
-    class: Addworking\Security\Infrastructure\Doctrine\DoctrineEnterpriseRepository
+    class: Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineEnterpriseRepository
     autowire: true
 
   Addworking\Security\Domain\Repositories\ModuleRepository:
-    class: Addworking\Security\Infrastructure\Doctrine\DoctrineModuleRepository
+    class: Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineModuleRepository
     autowire: true
 
   Addworking\Security\Domain\Repositories\UserRepository:
-    class: Addworking\Security\Infrastructure\Doctrine\DoctrineUserRepository
+    class: Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineUserRepository
     autowire: true
 
   Addworking\Security\Domain\Repositories\MemberRepository:
-    class: Addworking\Security\Infrastructure\Doctrine\DoctrineMemberRepository
+    class: Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineMemberRepository
     autowire: true
 
   Addworking\Security\Domain\Gateways\AuthenticationGateway:
-    class: Addworking\Security\Infrastructure\Doctrine\DoctrineAuthenticationGateway
+    class: Addworking\Security\Infrastructure\InMemory\InMemoryAuthenticationGateway
     autowire: true
 
   Addworking\Security\Application\AuthorizationChecker:

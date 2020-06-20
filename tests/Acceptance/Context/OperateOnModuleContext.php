@@ -2,6 +2,7 @@
 
 namespace Tests\Acceptance\Context;
 
+use Tests\Application;
 use PHPUnit\Framework\TestCase;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
@@ -9,8 +10,11 @@ use Behat\Gherkin\Node\PyStringNode;
 use Addworking\Security\Domain\Models\User;
 use Addworking\Security\Domain\Models\Member;
 use Addworking\Security\Domain\Models\Module;
+use Behat\Behat\Hook\Scope\BeforeScenarioScope;
+use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
 use Addworking\Security\Domain\Models\Enterprise;
 use Addworking\Security\Application\Commands\EditModule;
+use Addworking\Security\Application\AuthorizationChecker;
 use Addworking\Security\Domain\Exceptions\MemberNotAdmin;
 use Addworking\Security\Application\Commands\AddSubModule;
 use Addworking\Security\Application\Commands\CreateModule;
@@ -27,8 +31,6 @@ use Addworking\Security\Domain\Exceptions\EnterpriseAlreadyHaveModule;
 use Addworking\Security\Application\CommandHandlers\AddSubModuleHandler;
 use Addworking\Security\Application\CommandHandlers\CreateModuleHandler;
 use Addworking\Security\Application\CommandHandlers\RemoveModuleHandler;
-use Addworking\Security\Application\AuthorizationChecker;
-use Tests\ApplicationContainer;
 
 class OperateOnModuleContext extends TestCase implements Context
 {
@@ -42,7 +44,7 @@ class OperateOnModuleContext extends TestCase implements Context
 
     public function __construct()
     {
-        $container = ApplicationContainer::getContainerAndBootEnv();
+        $container = Application::getContainer();
 
         $this->userRepository = $container->get(UserRepository::class);
         $this->enterpriseRepository = $container->get(
@@ -56,6 +58,18 @@ class OperateOnModuleContext extends TestCase implements Context
         $this->authorizationChecker = $container->get(
             AuthorizationChecker::class
         );
+    }
+
+    /** @BeforeSuite */
+    public static function prepare(BeforeSuiteScope $scope)
+    {
+        Application::initEnv();
+    }
+
+    /** @BeforeScenario */
+    public function before(BeforeScenarioScope $scope)
+    {
+        Application::resetDatabase();
     }
 
     /**

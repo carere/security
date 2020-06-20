@@ -1,11 +1,11 @@
 <?php
 
+use Tests\Application;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use Tests\ApplicationContainer;
+
+Application::initEnv();
 
 return ConsoleRunner::createHelperSet(
-    ApplicationContainer::getContainerAndBootEnv()->get(
-        EntityManagerInterface::class
-    )
+    Application::getContainer()->get(EntityManagerInterface::class)
 );

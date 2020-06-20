@@ -28,6 +28,26 @@ class DoctrineModuleRepository implements ModuleRepository
             ->getResult();
     }
 
+    public function delete(string $id): bool
+    {
+        $this->em->remove($this->em->find(Module::class, $id));
+
+        return true;
+    }
+
+    public function nextIdentity(): string
+    {
+        // TODO: Replace this with uuid generation
+        return str_shuffle("a1b2c3d4e5f6g7h8i9j0");
+    }
+
+    public function save(Module $module): void
+    {
+        $this->add($module);
+
+        $this->em->flush();
+    }
+
     public function add(Module $module): void
     {
         if (!$this->em->contains($module)) {

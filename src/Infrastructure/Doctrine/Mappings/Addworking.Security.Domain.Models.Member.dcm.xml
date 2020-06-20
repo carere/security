@@ -14,7 +14,7 @@
         </many-to-one>
 
         <unique-constraints>
-            <unique-constraint columns="user,enterprise" name="unique_member" />
+            <unique-constraint columns="user_id,enterprise_id" name="unique_member" />
         </unique-constraints>
 
     </entity>

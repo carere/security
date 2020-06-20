@@ -2,23 +2,39 @@
 
 namespace Tests\Unit\Traits;
 
-use Tests\ApplicationContainer;
+use Tests\Application;
 use Addworking\Security\Domain\Models\User;
 use Addworking\Security\Domain\Models\Member;
 use Addworking\Security\Domain\Models\Module;
 use Addworking\Security\Domain\Models\Enterprise;
+use Addworking\Security\Application\AuthorizationChecker;
 use Addworking\Security\Domain\Repositories\UserRepository;
 use Addworking\Security\Domain\Repositories\MemberRepository;
 use Addworking\Security\Domain\Repositories\ModuleRepository;
 use Addworking\Security\Domain\Gateways\AuthenticationGateway;
 use Addworking\Security\Domain\Repositories\EnterpriseRepository;
-use Addworking\Security\Application\AuthorizationChecker;
 
 trait PopulateRepositories
 {
+    /**
+     * @beforeClass
+     */
+    public static function initializeEnvironment()
+    {
+        Application::initEnv();
+    }
+
+    /**
+     * @before
+     */
+    public function resetDatabase()
+    {
+        Application::resetDatabase();
+    }
+
     protected function setUp(): void
     {
-        $container = ApplicationContainer::getContainerAndBootEnv();
+        $container = Application::getContainer();
 
         $this->userRepository = $container->get(UserRepository::class);
         $this->enterpriseRepository = $container->get(
@@ -69,9 +85,10 @@ trait PopulateRepositories
     private function populateEnterprises()
     {
         $this->enterpriseRepository->add(
-            (new Enterprise('abc', 'Addworking'))->addModule(
-                $this->moduleRepository->find('abc')
-            )
+            (new Enterprise(
+                'f1494810-ed7a-406f-8aeb-7845c4105b01',
+                'Addworking'
+            ))->addModule($this->moduleRepository->find('abc'))
         );
         $this->enterpriseRepository->add(
             (new Enterprise('def', 'Entreprise n°1'))->addModule(
