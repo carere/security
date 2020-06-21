@@ -2,12 +2,14 @@
 
 namespace Addworking\Security\Domain\Models;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Module
 {
     private string $id;
     private string $name;
     private string $description;
-    private array $childrens;
+    private \ArrayAccess $childrens;
     private Module $parent;
 
     public function __construct(string $id, string $name, string $description)
@@ -15,6 +17,7 @@ class Module
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
+        $this->childrens = new ArrayCollection();
     }
 
     public function getId(): string
@@ -53,7 +56,7 @@ class Module
         return $this;
     }
 
-    public function getChildrens(): array
+    public function getChildrens(): \ArrayAccess
     {
         return $this->childrens;
     }

@@ -353,7 +353,7 @@ class OperateOnModuleContext extends TestCase implements Context
 
         $this->assertNotEmpty(
             array_filter(
-                $module->getChildrens(),
+                $module->getChildrens()->toArray(),
                 fn(Module $m) => $m->getName() === $childName
             ),
             "The module {$parentName} should contain {$childName}"

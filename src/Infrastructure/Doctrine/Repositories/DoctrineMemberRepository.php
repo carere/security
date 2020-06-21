@@ -21,14 +21,16 @@ class DoctrineMemberRepository implements MemberRepository
     ): ?Member {
         return $this->em
             ->createQuery(
-                "SELECT m FROM :class m WHERE m.user_id = :user_id AND m.enterprise_id = :enterprise_id"
+                sprintf(
+                    "SELECT m FROM %s m WHERE m.user = :user_id AND m.enterprise = :enterprise_id",
+                    Member::class
+                )
             )
             ->setParameters([
-                'class' => Member::class,
                 'user_id' => $userId,
                 'enterprise_id' => $enterpriseId,
             ])
-            ->getResult();
+            ->getOneOrNullResult();
     }
 
     public function save(Member $member): void

@@ -1,7 +1,7 @@
 <doctrine-mapping>
     <entity name="Addworking\Security\Domain\Models\Enterprise" table="addworking_enterprise_enterprises" repository-class="Addworking\Security\Infrastructure\Doctrine\Repositories\EnterpriseRepository">
 
-        <id name="id" column="id" type="guid">
+        <id name="id" column="id" type="string">
             <generator strategy="NONE" />
         </id>
 

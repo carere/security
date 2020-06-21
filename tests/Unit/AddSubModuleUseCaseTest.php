@@ -40,7 +40,7 @@ class AddSubModuleUseCaseTest extends TestCase
 
         $this->assertNotEmpty(
             array_filter(
-                $parent->getChildrens(),
+                $parent->getChildrens()->toArray(),
                 fn(Module $m) => $m->getName() === "Suivi de Mission"
             ),
             "The module {$parent->getName()} should contain Suivi de Mission"

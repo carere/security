@@ -20,9 +20,14 @@ class DoctrineEnterpriseRepository implements EnterpriseRepository
     public function findByName(string $name): ?Enterprise
     {
         return $this->em
-            ->createQuery("SELECT e FROM :class e WHERE e.name = :name")
-            ->setParameters(['class' => Enterprise::class, 'name' => $name])
-            ->getResult();
+            ->createQuery(
+                sprintf(
+                    "SELECT e FROM %s e WHERE e.name = :name",
+                    Enterprise::class
+                )
+            )
+            ->setParameter('name', $name)
+            ->getOneOrNullResult();
     }
 
     public function findAddworking(): ?Enterprise
@@ -34,10 +39,13 @@ class DoctrineEnterpriseRepository implements EnterpriseRepository
     {
         return $this->em
             ->createQuery(
-                "SELECT e FROM :class e JOIN e.modules m WHERE m.id = :module_id"
+                sprintf(
+                    "SELECT e FROM %s e JOIN e.modules m WHERE m.id = :module_id",
+                    Enterprise::class
+                )
             )
-            ->setParameters(['class' => Enterprise::class, 'id' => $moduleId])
-            ->getArrayResult();
+            ->setParameter('module_id', $moduleId)
+            ->getResult();
     }
 
     public function save(Enterprise $enterprise): void

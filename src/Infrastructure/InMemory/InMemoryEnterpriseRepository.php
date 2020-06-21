@@ -35,7 +35,10 @@ class InMemoryEnterpriseRepository implements EnterpriseRepository
     {
         return array_filter(
             $this->enterprises,
-            fn(Enterprise $e) => array_key_exists($moduleId, $e->getModules())
+            fn(Enterprise $e) => array_key_exists(
+                $moduleId,
+                $e->getModules()->toArray()
+            )
         );
     }
 }

@@ -23,9 +23,14 @@ class DoctrineModuleRepository implements ModuleRepository
     public function findByName(string $name): ?Module
     {
         return $this->em
-            ->createQuery("SELECT m FROM :class m WHERE m.name = :name")
-            ->setParameters(['class' => Module::class, 'name' => $name])
-            ->getResult();
+            ->createQuery(
+                sprintf(
+                    "SELECT m FROM %s m WHERE m.name = :name",
+                    Module::class
+                )
+            )
+            ->setParameter('name', $name)
+            ->getOneOrNullResult();
     }
 
     public function delete(Module $module): void
