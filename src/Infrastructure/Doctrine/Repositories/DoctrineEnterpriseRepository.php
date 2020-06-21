@@ -17,6 +17,11 @@ class DoctrineEnterpriseRepository implements EnterpriseRepository
         $this->em = $em;
     }
 
+    public function find(string $id): ?Enterprise
+    {
+        return $this->em->find(Enterprise::class, $id);
+    }
+
     public function findByName(string $name): ?Enterprise
     {
         return $this->em

@@ -17,6 +17,11 @@ class InMemoryEnterpriseRepository implements EnterpriseRepository
         }
     }
 
+    public function find(string $id): ?Enterprise
+    {
+        return $this->enterprises[$id] ?? null;
+    }
+
     public function findByName(string $name): ?Enterprise
     {
         $enterprises = array_filter(

@@ -35,6 +35,13 @@ class Enterprise
         return $this;
     }
 
+    public function removeModule(Module $module): self
+    {
+        $this->modules->removeElement($module);
+
+        return $this;
+    }
+
     public function getModules(): Collection
     {
         return $this->modules;

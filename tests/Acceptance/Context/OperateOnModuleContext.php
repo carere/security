@@ -374,9 +374,35 @@ class OperateOnModuleContext extends TestCase implements Context
         string $moduleName,
         string $enterpriseName
     ) {
-        (new AddModuleToEnterpriseHandler())->handle(
-            new AddModuleToEnterprise()
-        );
+        try {
+            $enterprise = $this->enterpriseRepository->findByName(
+                $enterpriseName
+            );
+
+            if (null === $enterprise) {
+                throw new EnterpriseDoesntExist();
+            }
+
+            $module = $this->moduleRepository->findByName($moduleName);
+
+            if (null === $module) {
+                throw new ModuleDoesntExist();
+            }
+
+            (new AddModuleToEnterpriseHandler(
+                $this->enterpriseRepository,
+                $this->moduleRepository,
+                $this->authenticationGateway,
+                $this->authorizationChecker
+            ))->handle(
+                new AddModuleToEnterprise(
+                    $module->getId(),
+                    $enterprise->getId()
+                )
+            );
+        } catch (\Exception $e) {
+            $this->errorsThrown[] = get_class($e);
+        }
     }
 
     /**
@@ -416,9 +442,35 @@ class OperateOnModuleContext extends TestCase implements Context
         string $moduleName,
         string $enterpriseName
     ) {
-        (new RemoveModuleFromEnterpriseHandler())->handle(
-            new RemoveModuleFromEnterprise()
-        );
+        try {
+            $enterprise = $this->enterpriseRepository->findByName(
+                $enterpriseName
+            );
+
+            if (null === $enterprise) {
+                throw new EnterpriseDoesntExist();
+            }
+
+            $module = $this->moduleRepository->findByName($moduleName);
+
+            if (null === $module) {
+                throw new ModuleDoesntExist();
+            }
+
+            (new RemoveModuleFromEnterpriseHandler(
+                $this->moduleRepository,
+                $this->enterpriseRepository,
+                $this->authenticationGateway,
+                $this->authorizationChecker
+            ))->handle(
+                new RemoveModuleFromEnterprise(
+                    $module->getId(),
+                    $enterprise->getId()
+                )
+            );
+        } catch (\Exception $e) {
+            $this->errorsThrown[] = get_class($e);
+        }
     }
 
     /**
