@@ -435,7 +435,8 @@ class OperateOnModuleContext extends TestCase implements Context
                 ->getModules()
                 ->exists(
                     fn(int $key, Module $m) => $m->getName() === $moduleName
-                )
+                ),
+            "The enterprise '{$enterpriseName}' should not have acces to module '{$moduleName}'"
         );
     }
 

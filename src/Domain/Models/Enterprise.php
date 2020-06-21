@@ -2,13 +2,14 @@
 
 namespace Addworking\Security\Domain\Models;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Enterprise
 {
     private string $id;
     private string $name;
-    private ArrayCollection $modules;
+    private Collection $modules;
 
     public function __construct(string $id, string $name)
     {
@@ -34,7 +35,7 @@ class Enterprise
         return $this;
     }
 
-    public function getModules(): ArrayCollection
+    public function getModules(): Collection
     {
         return $this->modules;
     }

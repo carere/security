@@ -3,13 +3,14 @@
 namespace Addworking\Security\Domain\Models;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class Module
 {
     private string $id;
     private string $name;
     private string $description;
-    private ArrayCollection $childrens;
+    private Collection $childrens;
     private Module $parent;
 
     public function __construct(string $id, string $name, string $description)
@@ -56,7 +57,7 @@ class Module
         return $this;
     }
 
-    public function getChildrens(): ArrayCollection
+    public function getChildrens(): Collection
     {
         return $this->childrens;
     }
