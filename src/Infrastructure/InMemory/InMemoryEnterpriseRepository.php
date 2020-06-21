@@ -2,6 +2,7 @@
 
 namespace Addworking\Security\Infrastructure\InMemory;
 
+use Addworking\Security\Domain\Models\Module;
 use Addworking\Security\Domain\Models\Enterprise;
 use Addworking\Security\Domain\Repositories\EnterpriseRepository;
 
@@ -35,10 +36,9 @@ class InMemoryEnterpriseRepository implements EnterpriseRepository
     {
         return array_filter(
             $this->enterprises,
-            fn(Enterprise $e) => array_key_exists(
-                $moduleId,
-                $e->getModules()->toArray()
-            )
+            fn(Enterprise $e) => $e
+                ->getModules()
+                ->exists(fn(int $key, Module $m) => $m->getId() === $moduleId)
         );
     }
 }

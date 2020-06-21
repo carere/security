@@ -38,12 +38,14 @@ class AddSubModuleUseCaseTest extends TestCase
 
         $this->addSubModule($parent->getId(), "Suivi de Mission", "turlututu");
 
-        $this->assertNotEmpty(
-            array_filter(
-                $parent->getChildrens()->toArray(),
-                fn(Module $m) => $m->getName() === "Suivi de Mission"
-            ),
-            "The module {$parent->getName()} should contain Suivi de Mission"
+        $this->assertTrue(
+            $parent
+                ->getChildrens()
+                ->exists(
+                    fn(int $key, Module $m) => $m->getName() ===
+                        "Suivi de Mission"
+                ),
+            "The module {$parent->getName()} should contain 'Suivi de Mission'"
         );
     }
 

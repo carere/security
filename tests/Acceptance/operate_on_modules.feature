@@ -1,5 +1,5 @@
 @operate-on-module
-Feature: Opérer sur les modules
+Feature: Manipuler les modules
 
     Background:
         Given des utilisateurs existent

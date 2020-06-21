@@ -9,7 +9,7 @@ class Module
     private string $id;
     private string $name;
     private string $description;
-    private \ArrayAccess $childrens;
+    private ArrayCollection $childrens;
     private Module $parent;
 
     public function __construct(string $id, string $name, string $description)
@@ -44,7 +44,7 @@ class Module
 
     public function addChild(Module $child): self
     {
-        $this->childrens[$child->getId()] = $child;
+        $this->childrens->add($child);
 
         return $this;
     }
@@ -56,7 +56,7 @@ class Module
         return $this;
     }
 
-    public function getChildrens(): \ArrayAccess
+    public function getChildrens(): ArrayCollection
     {
         return $this->childrens;
     }

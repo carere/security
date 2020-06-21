@@ -25,12 +25,18 @@ use Addworking\Security\Domain\Exceptions\ModuleAlreadyExist;
 use Addworking\Security\Domain\Repositories\MemberRepository;
 use Addworking\Security\Domain\Repositories\ModuleRepository;
 use Addworking\Security\Domain\Gateways\AuthenticationGateway;
+use Addworking\Security\Domain\Exceptions\EnterpriseDoesntExist;
 use Addworking\Security\Domain\Repositories\EnterpriseRepository;
+use Addworking\Security\Application\Commands\AddModuleToEnterprise;
 use Addworking\Security\Application\CommandHandlers\EditModuleHandler;
 use Addworking\Security\Domain\Exceptions\EnterpriseAlreadyHaveModule;
 use Addworking\Security\Application\CommandHandlers\AddSubModuleHandler;
 use Addworking\Security\Application\CommandHandlers\CreateModuleHandler;
 use Addworking\Security\Application\CommandHandlers\RemoveModuleHandler;
+use Addworking\Security\Application\Commands\RemoveModuleFromEnterprise;
+use Addworking\Security\Domain\Exceptions\EnterpriseDoesntHaveTheModule;
+use Addworking\Security\Application\CommandHandlers\AddModuleToEnterpriseHandler;
+use Addworking\Security\Application\CommandHandlers\RemoveModuleFromEnterpriseHandler;
 
 class OperateOnModuleContext extends TestCase implements Context
 {
@@ -349,14 +355,98 @@ class OperateOnModuleContext extends TestCase implements Context
         string $parentName,
         string $childName
     ) {
-        $module = $this->moduleRepository->findByName($parentName);
+        $parent = $this->moduleRepository->findByName($parentName);
 
-        $this->assertNotEmpty(
-            array_filter(
-                $module->getChildrens()->toArray(),
-                fn(Module $m) => $m->getName() === $childName
-            ),
+        $this->assertTrue(
+            $parent
+                ->getChildrens()
+                ->exists(
+                    fn(int $key, Module $m) => $m->getName() === $childName
+                ),
             "The module {$parentName} should contain {$childName}"
+        );
+    }
+
+    /**
+     * @When /^j\'essaye d\'ajouter le module "([^"]*)" à l\'entreprise "([^"]*)"$/
+     */
+    public function jessayeDajouterLeModuleALentreprise(
+        string $moduleName,
+        string $enterpriseName
+    ) {
+        (new AddModuleToEnterpriseHandler())->handle(
+            new AddModuleToEnterprise()
+        );
+    }
+
+    /**
+     * @Then /^l\'entreprise "([^"]*)" possède le module "([^"]*)"$/
+     */
+    public function lentreprisePossedeLeModule(
+        string $enterpriseName,
+        string $moduleName
+    ) {
+        $enterprise = $this->enterpriseRepository->findByName($enterpriseName);
+
+        $this->assertTrue(
+            $enterprise
+                ->getModules()
+                ->exists(
+                    fn(int $key, Module $m) => $m->getName() === $moduleName
+                ),
+            "The enterprise '{$enterpriseName}' should have access to module '{$moduleName}'"
+        );
+    }
+
+    /**
+     * @Then /^une erreur est levée indiquant que l\'entreprise n\'existe pas$/
+     */
+    public function uneErreurEstLeveeInfiquantQueLenrepriseNexistePas()
+    {
+        $this->assertContainsEquals(
+            EnterpriseDoesntExist::class,
+            $this->errorsThrown
+        );
+    }
+
+    /**
+     * @When /^j\'essaye de retirer le module "([^"]*)" de l\'entreprise "([^"]*)"$/
+     */
+    public function jessayeDeRetirerLeModuleDeLentreprise(
+        string $moduleName,
+        string $enterpriseName
+    ) {
+        (new RemoveModuleFromEnterpriseHandler())->handle(
+            new RemoveModuleFromEnterprise()
+        );
+    }
+
+    /**
+     * @Then /^l\'entreprise "([^"]*)" ne possède plus le module "([^"]*)"$/
+     */
+    public function lentrepriseNePossedePlusLeModule(
+        string $enterpriseName,
+        string $moduleName
+    ) {
+        $enterprise = $this->enterpriseRepository->findByName($enterpriseName);
+
+        $this->assertFalse(
+            $enterprise
+                ->getModules()
+                ->exists(
+                    fn(int $key, Module $m) => $m->getName() === $moduleName
+                )
+        );
+    }
+
+    /**
+     * @Then /^une erreur est levée indiquant que l\'entreprise ne possède pas le module$/
+     */
+    public function uneErreurEstLeveeIndiquantQueLentrepriseNePossedePasLeModule()
+    {
+        $this->assertContainsEquals(
+            EnterpriseDoesntHaveTheModule::class,
+            $this->errorsThrown
         );
     }
 }

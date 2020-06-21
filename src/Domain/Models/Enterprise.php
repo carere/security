@@ -8,7 +8,7 @@ class Enterprise
 {
     private string $id;
     private string $name;
-    private \ArrayAccess $modules;
+    private ArrayCollection $modules;
 
     public function __construct(string $id, string $name)
     {
@@ -29,12 +29,12 @@ class Enterprise
 
     public function addModule(Module $module): self
     {
-        $this->modules[$module->getId()] = $module;
+        $this->modules->add($module);
 
         return $this;
     }
 
-    public function getModules(): \ArrayAccess
+    public function getModules(): ArrayCollection
     {
         return $this->modules;
     }
