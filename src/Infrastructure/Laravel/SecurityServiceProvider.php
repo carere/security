@@ -28,12 +28,19 @@ class SecurityServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__ . "/Migrations");
+        $this->publishes([
+            __DIR__ . "/../../../config/security.php" => config_path(
+                'security.php'
+            ),
+        ]);
     }
 
     public function register()
     {
         $this->app->singleton(
             EntityManagerInterface::class,
+            //TODO: Use laravel configuration for connection parameters
+            //TODO: Use laravel configuration for dev mode (APP_ENV)
             fn($app) => EntityManagerFactory::createEntityManager([], false)
         );
 
@@ -46,6 +53,7 @@ class SecurityServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             AuthenticationGateway::class,
+            //TODO: Use real gateways instead of in memory
             fn($app) => new InMemoryAuthenticationGateway()
         );
 
