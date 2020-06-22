@@ -29,9 +29,12 @@ class SecurityServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__ . "/Migrations");
-        $this->publishes([
-            __DIR__ . "/Config/security.php" => config_path('security.php'),
-        ]);
+        $this->publishes(
+            [
+                __DIR__ . "/Config/security.php" => config_path('security.php'),
+            ],
+            'security'
+        );
     }
 
     public function register()
