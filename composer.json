@@ -16,7 +16,8 @@
   "require": {
     "doctrine/orm": "2.*",
     "illuminate/support": "7.*",
-    "illuminate/database": "7.*"
+    "illuminate/database": "7.*",
+    "ramsey/uuid": "^4.0"
   },
   "require-dev": {
     "behat/behat": "3.*",

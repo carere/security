@@ -16,6 +16,11 @@ class InMemoryUserRepository implements UserRepository
         }
     }
 
+    public function find(string $id): ?User
+    {
+        return isset($this->users[$id]) ?? null;
+    }
+
     public function findByName(string $name): ?User
     {
         $users = array_filter(

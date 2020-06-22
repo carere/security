@@ -15,6 +15,11 @@ class DoctrineUserRepository implements UserRepository
         $this->em = $em;
     }
 
+    public function find(string $id): ?User
+    {
+        return $this->em->find(User::class, $id);
+    }
+
     public function findByName(string $name): ?User
     {
         return $this->em

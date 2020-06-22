@@ -5,6 +5,7 @@ namespace Addworking\Security\Infrastructure\Doctrine\Repositories;
 use Addworking\Security\Domain\Models\Module;
 use Doctrine\ORM\EntityManagerInterface;
 use Addworking\Security\Domain\Repositories\ModuleRepository;
+use Ramsey\Uuid\Uuid;
 
 class DoctrineModuleRepository implements ModuleRepository
 {
@@ -41,8 +42,7 @@ class DoctrineModuleRepository implements ModuleRepository
 
     public function nextIdentity(): string
     {
-        // TODO: Replace this with uuid generation
-        return str_shuffle("a1b2c3d4e5f6g7h8i9j0");
+        return Uuid::uuid4()->toString();
     }
 
     public function save(Module $module): void

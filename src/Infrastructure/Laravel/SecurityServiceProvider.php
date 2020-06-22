@@ -2,26 +2,27 @@
 
 namespace Addworking\Security\Infrastructure\Laravel;
 
-use Addworking\Security\Application\AuthorizationChecker;
-use Addworking\Security\Application\CommandHandlers\AddModuleToEnterpriseHandler;
-use Addworking\Security\Application\CommandHandlers\AddSubModuleHandler;
-use Addworking\Security\Application\CommandHandlers\CreateModuleHandler;
-use Addworking\Security\Application\CommandHandlers\EditModuleHandler;
-use Addworking\Security\Application\CommandHandlers\RemoveModuleFromEnterpriseHandler;
-use Addworking\Security\Application\CommandHandlers\RemoveModuleHandler;
-use Addworking\Security\Domain\Gateways\AuthenticationGateway;
-use Addworking\Security\Domain\Repositories\EnterpriseRepository;
-use Addworking\Security\Domain\Repositories\MemberRepository;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Contracts\Foundation\Application;
+use Addworking\Security\Application\AuthorizationChecker;
 use Addworking\Security\Domain\Repositories\UserRepository;
+use Addworking\Security\Domain\Repositories\MemberRepository;
+use Addworking\Security\Domain\Gateways\AuthenticationGateway;
+use Addworking\Security\Domain\Repositories\EnterpriseRepository;
 use Addworking\Security\Infrastructure\Doctrine\EntityManagerFactory;
+use Addworking\Security\Application\CommandHandlers\EditModuleHandler;
+use Addworking\Security\Application\CommandHandlers\AddSubModuleHandler;
+use Addworking\Security\Application\CommandHandlers\CreateModuleHandler;
+use Addworking\Security\Application\CommandHandlers\RemoveModuleHandler;
+use Addworking\Security\Application\CommandHandlers\AddModuleToEnterpriseHandler;
 use Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineUserRepository;
+use Addworking\Security\Application\CommandHandlers\RemoveModuleFromEnterpriseHandler;
 use Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineMemberRepository;
 use Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineModuleRepository;
 use Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineEnterpriseRepository;
-use Addworking\Security\Infrastructure\InMemory\InMemoryAuthenticationGateway;
+use Addworking\Security\Infrastructure\Laravel\Gateways\LaravelAuthenticationGateway;
 
 class SecurityServiceProvider extends ServiceProvider
 {
@@ -29,9 +30,7 @@ class SecurityServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . "/Migrations");
         $this->publishes([
-            __DIR__ . "/../../../config/security.php" => config_path(
-                'security.php'
-            ),
+            __DIR__ . "/Config/security.php" => config_path('security.php'),
         ]);
     }
 
@@ -39,9 +38,17 @@ class SecurityServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             EntityManagerInterface::class,
-            //TODO: Use laravel configuration for connection parameters
-            //TODO: Use laravel configuration for dev mode (APP_ENV)
-            fn($app) => EntityManagerFactory::createEntityManager([], false)
+            fn($app) => EntityManagerFactory::createEntityManager(
+                [
+                    'driver' => Config::get('security.database.driver'),
+                    'user' => Config::get('security.database.user'),
+                    'password' => Config::get('security.database.password'),
+                    'host' => Config::get('security.database.host'),
+                    'port' => Config::get('security.database.port'),
+                    'dbname' => Config::get('security.database.dbname'),
+                ],
+                in_array(Config::get('security.env'), ['local', 'test'])
+            )
         );
 
         $this->registerRepositories();
@@ -53,8 +60,9 @@ class SecurityServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             AuthenticationGateway::class,
-            //TODO: Use real gateways instead of in memory
-            fn($app) => new InMemoryAuthenticationGateway()
+            fn(Application $app) => new LaravelAuthenticationGateway(
+                $app->make(UserRepository::class)
+            )
         );
 
         $this->app->singleton(

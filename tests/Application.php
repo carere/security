@@ -9,7 +9,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Addworking\Security\Infrastructure\Doctrine\EntityManagerFactory;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-//TODO: Use configuration here instead of env
 class Application
 {
     public static function initEnv()
