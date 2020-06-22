@@ -16,7 +16,7 @@ class CreateAddworkingEnterpriseMembersTable extends Migration
             $table->uuid('id');
             $table->uuid('enterprise_id');
             $table->uuid('user_id');
-            $table->string('job_title')->default('A renseigner');
+            //$table->string('job_title')->default('A renseigner');
             $table->timestamps();
             $table->softDeletes();
 
