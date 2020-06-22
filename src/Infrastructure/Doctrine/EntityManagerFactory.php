@@ -8,20 +8,15 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class EntityManagerFactory
 {
-    public static function createEntityManager(): EntityManagerInterface
-    {
+    public static function createEntityManager(
+        array $connection,
+        bool $isDevMode
+    ): EntityManagerInterface {
         return EntityManager::create(
-            [
-                'driver' => 'pdo_pgsql',
-                'user' => $_ENV['DB_USERNAME'],
-                'password' => $_ENV['DB_PASSWORD'],
-                'host' => $_ENV['DB_HOST'],
-                'port' => $_ENV['DB_PORT'],
-                'dbname' => $_ENV['DB_DATABASE'],
-            ],
+            $connection,
             Setup::createXMLMetadataConfiguration(
                 [__DIR__ . "/Mappings"],
-                $_ENV['APP_ENV'] === 'dev' || $_ENV['APP_ENV'] === 'test'
+                $isDevMode
             )
         );
     }

@@ -22,7 +22,17 @@ class Application
 
         $containerBuilder->set(
             EntityManagerInterface::class,
-            EntityManagerFactory::createEntityManager()
+            EntityManagerFactory::createEntityManager(
+                [
+                    'driver' => 'pdo_pgsql',
+                    'user' => $_ENV['DB_USERNAME'],
+                    'password' => $_ENV['DB_PASSWORD'],
+                    'host' => $_ENV['DB_HOST'],
+                    'port' => $_ENV['DB_PORT'],
+                    'dbname' => $_ENV['DB_DATABASE'],
+                ],
+                in_array($_ENV['APP_ENV'], ['test', 'dev'])
+            )
         );
 
         (new YamlFileLoader(
