@@ -1,9 +1,9 @@
 <?php
 
-namespace Addworking\Security\Infrastructure\InMemory;
+namespace Ashiso\Security\Infrastructure\InMemory;
 
-use Addworking\Security\Domain\Models\User;
-use Addworking\Security\Domain\Gateways\AuthenticationGateway;
+use Ashiso\Security\Domain\Models\User;
+use Ashiso\Security\Domain\Gateways\AuthenticationGateway;
 
 class InMemoryAuthenticationGateway implements AuthenticationGateway
 {

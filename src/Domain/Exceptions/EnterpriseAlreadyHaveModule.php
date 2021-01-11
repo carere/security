@@ -1,6 +1,6 @@
 <?php
 
-namespace Addworking\Security\Domain\Exceptions;
+namespace Ashiso\Security\Domain\Exceptions;
 
 class EnterpriseAlreadyHaveModule extends \Exception
 {

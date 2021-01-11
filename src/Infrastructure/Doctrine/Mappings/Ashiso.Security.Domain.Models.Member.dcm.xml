@@ -1,15 +1,15 @@
 <doctrine-mapping>
-    <entity name="Addworking\Security\Domain\Models\Member" table="addworking_enterprise_members" repository-class="Addworking\Security\Infrastructure\Doctrine\Repositories\MemberRepository">
+    <entity name="Ashiso\Security\Domain\Models\Member" table="ashiso_enterprise_members" repository-class="Ashiso\Security\Infrastructure\Doctrine\Repositories\MemberRepository">
 
         <id name="id" column="id" type="string">
             <generator strategy="NONE" />
         </id>
 
-        <many-to-one field="user" target-entity="Addworking\Security\Domain\Models\User">
+        <many-to-one field="user" target-entity="Ashiso\Security\Domain\Models\User">
             <join-column name="user_id" referenced-column-name="id" />
         </many-to-one>
 
-        <many-to-one field="enterprise" target-entity="Addworking\Security\Domain\Models\Enterprise">
+        <many-to-one field="enterprise" target-entity="Ashiso\Security\Domain\Models\Enterprise">
             <join-column name="enterprise_id" referenced-column-name="id" />
         </many-to-one>
 

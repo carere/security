@@ -1,8 +1,8 @@
 <?php
 
-namespace Addworking\Security\Domain\Repositories;
+namespace Ashiso\Security\Domain\Repositories;
 
-use Addworking\Security\Domain\Models\User;
+use Ashiso\Security\Domain\Models\User;
 
 interface UserRepository
 {

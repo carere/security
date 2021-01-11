@@ -1,8 +1,8 @@
 <?php
 
-namespace Addworking\Security\Domain\Gateways;
+namespace Ashiso\Security\Domain\Gateways;
 
-use Addworking\Security\Domain\Models\User;
+use Ashiso\Security\Domain\Models\User;
 
 interface AuthenticationGateway
 {

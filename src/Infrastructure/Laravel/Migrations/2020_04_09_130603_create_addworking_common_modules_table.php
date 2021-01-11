@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddworkingCommonModulesTable extends Migration
+class CreateAshisoCommonModulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAddworkingCommonModulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('addworking_common_modules', function (
+        Schema::create('ashiso_common_modules', function (
             Blueprint $table
         ) {
             $table->uuid('id');
@@ -27,7 +27,7 @@ class CreateAddworkingCommonModulesTable extends Migration
             $table
                 ->foreign('parent_id')
                 ->references('id')
-                ->on('addworking_common_modules');
+                ->on('ashiso_common_modules');
         });
     }
 
@@ -38,6 +38,6 @@ class CreateAddworkingCommonModulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('addworking_common_modules');
+        Schema::dropIfExists('ashiso_common_modules');
     }
 }

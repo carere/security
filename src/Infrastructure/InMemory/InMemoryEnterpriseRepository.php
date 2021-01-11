@@ -1,10 +1,10 @@
 <?php
 
-namespace Addworking\Security\Infrastructure\InMemory;
+namespace Ashiso\Security\Infrastructure\InMemory;
 
-use Addworking\Security\Domain\Models\Module;
-use Addworking\Security\Domain\Models\Enterprise;
-use Addworking\Security\Domain\Repositories\EnterpriseRepository;
+use Ashiso\Security\Domain\Models\Module;
+use Ashiso\Security\Domain\Models\Enterprise;
+use Ashiso\Security\Domain\Repositories\EnterpriseRepository;
 
 class InMemoryEnterpriseRepository implements EnterpriseRepository
 {
@@ -32,9 +32,9 @@ class InMemoryEnterpriseRepository implements EnterpriseRepository
         return !empty($enterprises) ? current($enterprises) : null;
     }
 
-    public function findAddworking(): ?Enterprise
+    public function findAshiso(): ?Enterprise
     {
-        return $this->findByName('Addworking');
+        return $this->findByName('Ashiso');
     }
 
     public function findByModuleId(string $moduleId): array

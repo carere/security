@@ -1,6 +1,6 @@
 <?php
 
-namespace Addworking\Security\Infrastructure\Doctrine;
+namespace Ashiso\Security\Infrastructure\Doctrine;
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;

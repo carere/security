@@ -1,10 +1,10 @@
 <?php
 
-namespace Addworking\Security\Infrastructure\Doctrine\Repositories;
+namespace Ashiso\Security\Infrastructure\Doctrine\Repositories;
 
-use Addworking\Security\Domain\Models\Enterprise;
+use Ashiso\Security\Domain\Models\Enterprise;
 use Doctrine\ORM\EntityManagerInterface;
-use Addworking\Security\Domain\Repositories\EnterpriseRepository;
+use Ashiso\Security\Domain\Repositories\EnterpriseRepository;
 
 class DoctrineEnterpriseRepository implements EnterpriseRepository
 {
@@ -35,7 +35,7 @@ class DoctrineEnterpriseRepository implements EnterpriseRepository
             ->getOneOrNullResult();
     }
 
-    public function findAddworking(): ?Enterprise
+    public function findAshiso(): ?Enterprise
     {
         return $this->em->find(Enterprise::class, self::ADDWORKING_ID);
     }

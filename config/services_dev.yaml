@@ -2,21 +2,21 @@ services:
   _defaults:
     public: true
 
-  Addworking\Security\Domain\Repositories\EnterpriseRepository:
-    class: Addworking\Security\Infrastructure\InMemory\InMemoryEnterpriseRepository
+  Ashiso\Security\Domain\Repositories\EnterpriseRepository:
+    class: Ashiso\Security\Infrastructure\InMemory\InMemoryEnterpriseRepository
 
-  Addworking\Security\Domain\Repositories\ModuleRepository:
-    class: Addworking\Security\Infrastructure\InMemory\InMemoryModuleRepository
+  Ashiso\Security\Domain\Repositories\ModuleRepository:
+    class: Ashiso\Security\Infrastructure\InMemory\InMemoryModuleRepository
 
-  Addworking\Security\Domain\Repositories\UserRepository:
-    class: Addworking\Security\Infrastructure\InMemory\InMemoryUserRepository
+  Ashiso\Security\Domain\Repositories\UserRepository:
+    class: Ashiso\Security\Infrastructure\InMemory\InMemoryUserRepository
 
-  Addworking\Security\Domain\Repositories\MemberRepository:
-    class: Addworking\Security\Infrastructure\InMemory\InMemoryMemberRepository
+  Ashiso\Security\Domain\Repositories\MemberRepository:
+    class: Ashiso\Security\Infrastructure\InMemory\InMemoryMemberRepository
 
-  Addworking\Security\Domain\Gateways\AuthenticationGateway:
-    class: Addworking\Security\Infrastructure\InMemory\InMemoryAuthenticationGateway
+  Ashiso\Security\Domain\Gateways\AuthenticationGateway:
+    class: Ashiso\Security\Infrastructure\InMemory\InMemoryAuthenticationGateway
 
-  Addworking\Security\Application\AuthorizationChecker:
-    class: Addworking\Security\Application\AuthorizationChecker
+  Ashiso\Security\Application\AuthorizationChecker:
+    class: Ashiso\Security\Application\AuthorizationChecker
     autowire: true

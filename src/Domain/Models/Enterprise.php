@@ -1,6 +1,6 @@
 <?php
 
-namespace Addworking\Security\Domain\Models;
+namespace Ashiso\Security\Domain\Models;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;

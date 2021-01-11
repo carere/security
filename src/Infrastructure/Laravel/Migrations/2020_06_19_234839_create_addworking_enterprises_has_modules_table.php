@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddworkingEnterprisesHasModulesTable extends Migration
+class CreateAshisoEnterprisesHasModulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAddworkingEnterprisesHasModulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('addworking_enterprises_has_modules', function (
+        Schema::create('ashiso_enterprises_has_modules', function (
             Blueprint $table
         ) {
             $table->uuid('enterprise_id');
@@ -22,12 +22,12 @@ class CreateAddworkingEnterprisesHasModulesTable extends Migration
             $table
                 ->foreign('enterprise_id')
                 ->references('id')
-                ->on('addworking_enterprise_members');
+                ->on('ashiso_enterprise_members');
 
             $table
                 ->foreign('module_id')
                 ->references('id')
-                ->on('addworking_common_modules');
+                ->on('ashiso_common_modules');
 
             $table->timestamps();
         });
@@ -40,6 +40,6 @@ class CreateAddworkingEnterprisesHasModulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('addworking_enterprises_has_modules');
+        Schema::dropIfExists('ashiso_enterprises_has_modules');
     }
 }

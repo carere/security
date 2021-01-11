@@ -1,10 +1,10 @@
 <?php
 
-namespace Addworking\Security\Application;
+namespace Ashiso\Security\Application;
 
-use Addworking\Security\Domain\Models\User;
-use Addworking\Security\Domain\Repositories\EnterpriseRepository;
-use Addworking\Security\Domain\Repositories\MemberRepository;
+use Ashiso\Security\Domain\Models\User;
+use Ashiso\Security\Domain\Repositories\EnterpriseRepository;
+use Ashiso\Security\Domain\Repositories\MemberRepository;
 
 class AuthorizationChecker
 {
@@ -24,7 +24,7 @@ class AuthorizationChecker
         return null !==
             $this->memberRepository->findByUserAndEnterprise(
                 $user->getId(),
-                $this->enterpriseRepository->findAddworking()->getId()
+                $this->enterpriseRepository->findAshiso()->getId()
             );
     }
 }

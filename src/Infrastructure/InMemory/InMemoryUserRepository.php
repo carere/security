@@ -1,9 +1,9 @@
 <?php
 
-namespace Addworking\Security\Infrastructure\InMemory;
+namespace Ashiso\Security\Infrastructure\InMemory;
 
-use Addworking\Security\Domain\Models\User;
-use Addworking\Security\Domain\Repositories\UserRepository;
+use Ashiso\Security\Domain\Models\User;
+use Ashiso\Security\Domain\Repositories\UserRepository;
 
 class InMemoryUserRepository implements UserRepository
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Addworking\Security\Infrastructure\Doctrine\Repositories;
+namespace Ashiso\Security\Infrastructure\Doctrine\Repositories;
 
-use Addworking\Security\Domain\Models\Module;
+use Ashiso\Security\Domain\Models\Module;
 use Doctrine\ORM\EntityManagerInterface;
-use Addworking\Security\Domain\Repositories\ModuleRepository;
+use Ashiso\Security\Domain\Repositories\ModuleRepository;
 use Ramsey\Uuid\Uuid;
 
 class DoctrineModuleRepository implements ModuleRepository

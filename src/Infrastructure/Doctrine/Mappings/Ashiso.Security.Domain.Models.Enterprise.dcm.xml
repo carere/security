@@ -1,5 +1,5 @@
 <doctrine-mapping>
-    <entity name="Addworking\Security\Domain\Models\Enterprise" table="addworking_enterprise_enterprises" repository-class="Addworking\Security\Infrastructure\Doctrine\Repositories\EnterpriseRepository">
+    <entity name="Ashiso\Security\Domain\Models\Enterprise" table="ashiso_enterprise_enterprises" repository-class="Ashiso\Security\Infrastructure\Doctrine\Repositories\EnterpriseRepository">
 
         <id name="id" column="id" type="string">
             <generator strategy="NONE" />
@@ -7,8 +7,8 @@
 
         <field name="name" column="name" type="string" length="255" />
 
-        <many-to-many field="modules" target-entity="Addworking\Security\Domain\Models\Module" index-by="id">
-            <join-table name="addworking_enterprises_has_modules">
+        <many-to-many field="modules" target-entity="Ashiso\Security\Domain\Models\Module" index-by="id">
+            <join-table name="ashiso_enterprises_has_modules">
                 <join-columns>
                     <join-column name="enterprise_id" referenced-column-name="id" />
                 </join-columns>

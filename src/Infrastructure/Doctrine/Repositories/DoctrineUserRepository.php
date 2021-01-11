@@ -1,10 +1,10 @@
 <?php
 
-namespace Addworking\Security\Infrastructure\Doctrine\Repositories;
+namespace Ashiso\Security\Infrastructure\Doctrine\Repositories;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Addworking\Security\Domain\Models\User;
-use Addworking\Security\Domain\Repositories\UserRepository;
+use Ashiso\Security\Domain\Models\User;
+use Ashiso\Security\Domain\Repositories\UserRepository;
 
 class DoctrineUserRepository implements UserRepository
 {

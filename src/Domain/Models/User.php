@@ -1,6 +1,6 @@
 <?php
 
-namespace Addworking\Security\Domain\Models;
+namespace Ashiso\Security\Domain\Models;
 
 class User
 {

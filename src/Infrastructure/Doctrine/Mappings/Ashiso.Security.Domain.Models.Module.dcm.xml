@@ -1,5 +1,5 @@
 <doctrine-mapping>
-    <entity name="Addworking\Security\Domain\Models\Module" table="addworking_security_modules" repository-class="Addworking\Security\Infrastructure\Doctrine\Repositories\ModuleRepository">
+    <entity name="Ashiso\Security\Domain\Models\Module" table="ashiso_security_modules" repository-class="Ashiso\Security\Infrastructure\Doctrine\Repositories\ModuleRepository">
 
         <id name="id" column="id" type="string">
             <generator strategy="NONE" />
@@ -8,12 +8,12 @@
         <field name="name" column="name" type="string" length="255" />
         <field name="description" column="description" type="text" />
 
-        <one-to-many field="childrens" target-entity="Addworking\Security\Domain\Models\Module" mapped-by="parent" index-by="id">
+        <one-to-many field="childrens" target-entity="Ashiso\Security\Domain\Models\Module" mapped-by="parent" index-by="id">
             <cascade>
                 <cascade-all />
             </cascade>
         </one-to-many>
-        <many-to-one field="parent" target-entity="Addworking\Security\Domain\Models\Module" inversed-by="childrens">
+        <many-to-one field="parent" target-entity="Ashiso\Security\Domain\Models\Module" inversed-by="childrens">
             <join-column name="parent_id" referenced-column-name="id" />
         </many-to-one>
 

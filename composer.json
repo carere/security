@@ -1,5 +1,5 @@
 {
-  "name": "addworking/security",
+  "name": "ashiso/security",
   "description": "Identity & Access Context",
   "authors": [
     {
@@ -9,15 +9,15 @@
   ],
   "autoload": {
     "psr-4": {
-      "Addworking\\Security\\": "src/",
+      "Ashiso\\Security\\": "src/",
       "Tests\\": "tests/"
     }
   },
   "require": {
     "doctrine/orm": "2.*",
-    "illuminate/support": "7.*",
-    "illuminate/database": "7.*",
-    "ramsey/uuid": "3.*"
+    "illuminate/support": "8.*",
+    "illuminate/database": "8.*",
+    "ramsey/uuid": "4.*"
   },
   "require-dev": {
     "behat/behat": "3.*",
@@ -31,7 +31,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Addworking\\Security\\Infrastructure\\Laravel\\SecurityServiceProvider"
+        "Ashiso\\Security\\Infrastructure\\Laravel\\SecurityServiceProvider"
       ]
     }
   }

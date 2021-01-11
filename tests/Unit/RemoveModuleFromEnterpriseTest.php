@@ -5,19 +5,19 @@ namespace Tests\Unit;
 use PHPUnit\Framework\TestCase;
 use Tests\Unit\Traits\Authentication;
 use Tests\Unit\Traits\PopulateRepositories;
-use Addworking\Security\Domain\Models\Module;
-use Addworking\Security\Application\AuthorizationChecker;
-use Addworking\Security\Domain\Exceptions\MemberNotAdmin;
-use Addworking\Security\Domain\Repositories\UserRepository;
-use Addworking\Security\Domain\Exceptions\ModuleDoesntExist;
-use Addworking\Security\Domain\Repositories\MemberRepository;
-use Addworking\Security\Domain\Repositories\ModuleRepository;
-use Addworking\Security\Domain\Gateways\AuthenticationGateway;
-use Addworking\Security\Domain\Exceptions\EnterpriseDoesntExist;
-use Addworking\Security\Domain\Repositories\EnterpriseRepository;
-use Addworking\Security\Application\Commands\RemoveModuleFromEnterprise;
-use Addworking\Security\Domain\Exceptions\EnterpriseDoesntHaveTheModule;
-use Addworking\Security\Application\CommandHandlers\RemoveModuleFromEnterpriseHandler;
+use Ashiso\Security\Domain\Models\Module;
+use Ashiso\Security\Application\AuthorizationChecker;
+use Ashiso\Security\Domain\Exceptions\MemberNotAdmin;
+use Ashiso\Security\Domain\Repositories\UserRepository;
+use Ashiso\Security\Domain\Exceptions\ModuleDoesntExist;
+use Ashiso\Security\Domain\Repositories\MemberRepository;
+use Ashiso\Security\Domain\Repositories\ModuleRepository;
+use Ashiso\Security\Domain\Gateways\AuthenticationGateway;
+use Ashiso\Security\Domain\Exceptions\EnterpriseDoesntExist;
+use Ashiso\Security\Domain\Repositories\EnterpriseRepository;
+use Ashiso\Security\Application\Commands\RemoveModuleFromEnterprise;
+use Ashiso\Security\Domain\Exceptions\EnterpriseDoesntHaveTheModule;
+use Ashiso\Security\Application\CommandHandlers\RemoveModuleFromEnterpriseHandler;
 
 class RemoveModuleFromEnterpriseTest extends TestCase
 {

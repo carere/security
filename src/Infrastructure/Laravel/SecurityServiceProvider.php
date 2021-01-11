@@ -1,28 +1,28 @@
 <?php
 
-namespace Addworking\Security\Infrastructure\Laravel;
+namespace Ashiso\Security\Infrastructure\Laravel;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Contracts\Foundation\Application;
-use Addworking\Security\Application\AuthorizationChecker;
-use Addworking\Security\Domain\Repositories\UserRepository;
-use Addworking\Security\Domain\Repositories\MemberRepository;
-use Addworking\Security\Domain\Gateways\AuthenticationGateway;
-use Addworking\Security\Domain\Repositories\EnterpriseRepository;
-use Addworking\Security\Infrastructure\Doctrine\EntityManagerFactory;
-use Addworking\Security\Application\CommandHandlers\EditModuleHandler;
-use Addworking\Security\Application\CommandHandlers\AddSubModuleHandler;
-use Addworking\Security\Application\CommandHandlers\CreateModuleHandler;
-use Addworking\Security\Application\CommandHandlers\RemoveModuleHandler;
-use Addworking\Security\Application\CommandHandlers\AddModuleToEnterpriseHandler;
-use Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineUserRepository;
-use Addworking\Security\Application\CommandHandlers\RemoveModuleFromEnterpriseHandler;
-use Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineMemberRepository;
-use Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineModuleRepository;
-use Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineEnterpriseRepository;
-use Addworking\Security\Infrastructure\Laravel\Gateways\LaravelAuthenticationGateway;
+use Ashiso\Security\Application\AuthorizationChecker;
+use Ashiso\Security\Domain\Repositories\UserRepository;
+use Ashiso\Security\Domain\Repositories\MemberRepository;
+use Ashiso\Security\Domain\Gateways\AuthenticationGateway;
+use Ashiso\Security\Domain\Repositories\EnterpriseRepository;
+use Ashiso\Security\Infrastructure\Doctrine\EntityManagerFactory;
+use Ashiso\Security\Application\CommandHandlers\EditModuleHandler;
+use Ashiso\Security\Application\CommandHandlers\AddSubModuleHandler;
+use Ashiso\Security\Application\CommandHandlers\CreateModuleHandler;
+use Ashiso\Security\Application\CommandHandlers\RemoveModuleHandler;
+use Ashiso\Security\Application\CommandHandlers\AddModuleToEnterpriseHandler;
+use Ashiso\Security\Infrastructure\Doctrine\Repositories\DoctrineUserRepository;
+use Ashiso\Security\Application\CommandHandlers\RemoveModuleFromEnterpriseHandler;
+use Ashiso\Security\Infrastructure\Doctrine\Repositories\DoctrineMemberRepository;
+use Ashiso\Security\Infrastructure\Doctrine\Repositories\DoctrineModuleRepository;
+use Ashiso\Security\Infrastructure\Doctrine\Repositories\DoctrineEnterpriseRepository;
+use Ashiso\Security\Infrastructure\Laravel\Gateways\LaravelAuthenticationGateway;
 
 class SecurityServiceProvider extends ServiceProvider
 {

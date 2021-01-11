@@ -6,7 +6,7 @@ use Symfony\Component\Dotenv\Dotenv;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Addworking\Security\Infrastructure\Doctrine\EntityManagerFactory;
+use Ashiso\Security\Infrastructure\Doctrine\EntityManagerFactory;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class Application

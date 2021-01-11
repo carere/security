@@ -3,16 +3,16 @@
 namespace Tests\Unit\Traits;
 
 use Tests\Application;
-use Addworking\Security\Domain\Models\User;
-use Addworking\Security\Domain\Models\Member;
-use Addworking\Security\Domain\Models\Module;
-use Addworking\Security\Domain\Models\Enterprise;
-use Addworking\Security\Application\AuthorizationChecker;
-use Addworking\Security\Domain\Repositories\UserRepository;
-use Addworking\Security\Domain\Repositories\MemberRepository;
-use Addworking\Security\Domain\Repositories\ModuleRepository;
-use Addworking\Security\Domain\Gateways\AuthenticationGateway;
-use Addworking\Security\Domain\Repositories\EnterpriseRepository;
+use Ashiso\Security\Domain\Models\User;
+use Ashiso\Security\Domain\Models\Member;
+use Ashiso\Security\Domain\Models\Module;
+use Ashiso\Security\Domain\Models\Enterprise;
+use Ashiso\Security\Application\AuthorizationChecker;
+use Ashiso\Security\Domain\Repositories\UserRepository;
+use Ashiso\Security\Domain\Repositories\MemberRepository;
+use Ashiso\Security\Domain\Repositories\ModuleRepository;
+use Ashiso\Security\Domain\Gateways\AuthenticationGateway;
+use Ashiso\Security\Domain\Repositories\EnterpriseRepository;
 
 trait PopulateRepositories
 {
@@ -87,7 +87,7 @@ trait PopulateRepositories
         $this->enterpriseRepository->save(
             (new Enterprise(
                 'f1494810-ed7a-406f-8aeb-7845c4105b01',
-                'Addworking'
+                'Ashiso'
             ))->addModule($this->moduleRepository->find('abc'))
         );
         $this->enterpriseRepository->save(
@@ -109,7 +109,7 @@ trait PopulateRepositories
                     $this->userRepository->findByName('Matthieu Fravallo')
                 )
                 ->setEnterprise(
-                    $this->enterpriseRepository->findByName('Addworking')
+                    $this->enterpriseRepository->findByName('Ashiso')
                 )
         );
 

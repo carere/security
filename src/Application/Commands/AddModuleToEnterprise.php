@@ -1,6 +1,6 @@
 <?php
 
-namespace Addworking\Security\Application\Commands;
+namespace Ashiso\Security\Application\Commands;
 
 class AddModuleToEnterprise
 {

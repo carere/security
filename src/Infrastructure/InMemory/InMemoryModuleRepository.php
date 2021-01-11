@@ -1,9 +1,9 @@
 <?php
 
-namespace Addworking\Security\Infrastructure\InMemory;
+namespace Ashiso\Security\Infrastructure\InMemory;
 
-use Addworking\Security\Domain\Models\Module;
-use Addworking\Security\Domain\Repositories\ModuleRepository;
+use Ashiso\Security\Domain\Models\Module;
+use Ashiso\Security\Domain\Repositories\ModuleRepository;
 
 class InMemoryModuleRepository implements ModuleRepository
 {

@@ -4,13 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddworkingEnterpriseMembersTable extends Migration
+class CreateAshisoEnterpriseMembersTable extends Migration
 {
     public function up()
     {
-        Schema::dropIfExists('addworking_enterprise_members');
+        Schema::dropIfExists('ashiso_enterprise_members');
 
-        Schema::create('addworking_enterprise_members', function (
+        Schema::create('ashiso_enterprise_members', function (
             Blueprint $table
         ) {
             $table->uuid('id');
@@ -26,17 +26,17 @@ class CreateAddworkingEnterpriseMembersTable extends Migration
             $table
                 ->foreign('enterprise_id')
                 ->references('id')
-                ->on('addworking_enterprise_enterprises');
+                ->on('ashiso_enterprise_enterprises');
 
             $table
                 ->foreign('user_id')
                 ->references('id')
-                ->on('addworking_user_users');
+                ->on('ashiso_user_users');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('addworking_enterprise_members');
+        Schema::dropIfExists('ashiso_enterprise_members');
     }
 }

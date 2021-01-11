@@ -5,26 +5,26 @@ services:
   Doctrine\ORM\EntityManagerInterface:
     synthetic: true
 
-  Addworking\Security\Domain\Repositories\EnterpriseRepository:
-    class: Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineEnterpriseRepository
+  Ashiso\Security\Domain\Repositories\EnterpriseRepository:
+    class: Ashiso\Security\Infrastructure\Doctrine\Repositories\DoctrineEnterpriseRepository
     autowire: true
 
-  Addworking\Security\Domain\Repositories\ModuleRepository:
-    class: Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineModuleRepository
+  Ashiso\Security\Domain\Repositories\ModuleRepository:
+    class: Ashiso\Security\Infrastructure\Doctrine\Repositories\DoctrineModuleRepository
     autowire: true
 
-  Addworking\Security\Domain\Repositories\UserRepository:
-    class: Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineUserRepository
+  Ashiso\Security\Domain\Repositories\UserRepository:
+    class: Ashiso\Security\Infrastructure\Doctrine\Repositories\DoctrineUserRepository
     autowire: true
 
-  Addworking\Security\Domain\Repositories\MemberRepository:
-    class: Addworking\Security\Infrastructure\Doctrine\Repositories\DoctrineMemberRepository
+  Ashiso\Security\Domain\Repositories\MemberRepository:
+    class: Ashiso\Security\Infrastructure\Doctrine\Repositories\DoctrineMemberRepository
     autowire: true
 
-  Addworking\Security\Domain\Gateways\AuthenticationGateway:
-    class: Addworking\Security\Infrastructure\InMemory\InMemoryAuthenticationGateway
+  Ashiso\Security\Domain\Gateways\AuthenticationGateway:
+    class: Ashiso\Security\Infrastructure\InMemory\InMemoryAuthenticationGateway
     autowire: true
 
-  Addworking\Security\Application\AuthorizationChecker:
-    class: Addworking\Security\Application\AuthorizationChecker
+  Ashiso\Security\Application\AuthorizationChecker:
+    class: Ashiso\Security\Application\AuthorizationChecker
     autowire: true

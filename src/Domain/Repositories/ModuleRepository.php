@@ -1,8 +1,8 @@
 <?php
 
-namespace Addworking\Security\Domain\Repositories;
+namespace Ashiso\Security\Domain\Repositories;
 
-use Addworking\Security\Domain\Models\Module;
+use Ashiso\Security\Domain\Models\Module;
 
 interface ModuleRepository
 {
