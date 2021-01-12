@@ -12,7 +12,7 @@ Feature: Gérer les modules d'une entreprise
                 {
                     "id": "abc",
                     "name": "Sécurité",
-                    "description": "La sécurité c'est iportant :)"
+                    "description": "La sécurité c'est important :)"
                 },
                 {
                     "id": "def",
@@ -35,11 +35,11 @@ Feature: Gérer les modules d'une entreprise
             """
         And des entreprises existent
             | id                                   | name           | modules     |
-            | f1494810-ed7a-406f-8aeb-7845c4105b01 | Ashiso     | Sécurité    |
+            | f1494810-ed7a-406f-8aeb-7845c4105b01 | Ashiso         | Sécurité    |
             | def                                  | Entreprise n°1 | Facturation |
         And des membres d'entreprises existent
             | id  | user              | enterprise     |
-            | abc | Matthieu Fravallo | Ashiso     |
+            | abc | Matthieu Fravallo | Ashiso         |
             | def | Jean Dupont       | Entreprise n°1 |
 
     Scenario: Ajouter un module à une entreprise

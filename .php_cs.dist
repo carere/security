@@ -1,0 +1,10 @@
+<?php
+
+require_once __DIR__ . "/config/PrettierPHPFixer.php";
+
+return (new PhpCsFixer\Config())
+  ->registerCustomFixers([new PrettierPHPFixer()])
+  ->setRules([
+    "Prettier/php" => true,
+    "@PSR2" => true,
+  ]);

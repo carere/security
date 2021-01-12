@@ -8,7 +8,7 @@ use Ashiso\Security\Domain\Repositories\EnterpriseRepository;
 
 class DoctrineEnterpriseRepository implements EnterpriseRepository
 {
-    const ADDWORKING_ID = "f1494810-ed7a-406f-8aeb-7845c4105b01";
+    const ASHISO_ID = "f1494810-ed7a-406f-8aeb-7845c4105b01";
 
     private EntityManagerInterface $em;
 
@@ -31,13 +31,13 @@ class DoctrineEnterpriseRepository implements EnterpriseRepository
                     Enterprise::class
                 )
             )
-            ->setParameter('name', $name)
+            ->setParameter("name", $name)
             ->getOneOrNullResult();
     }
 
     public function findAshiso(): ?Enterprise
     {
-        return $this->em->find(Enterprise::class, self::ADDWORKING_ID);
+        return $this->em->find(Enterprise::class, self::ASHISO_ID);
     }
 
     public function findByModuleId(string $moduleId): array
@@ -49,7 +49,7 @@ class DoctrineEnterpriseRepository implements EnterpriseRepository
                     Enterprise::class
                 )
             )
-            ->setParameter('module_id', $moduleId)
+            ->setParameter("module_id", $moduleId)
             ->getResult();
     }
 

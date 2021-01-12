@@ -1,4 +1,4 @@
 vendor/
 .vscode/
 node_modules/
-config/.phpunit.result.cache
+*.cache
